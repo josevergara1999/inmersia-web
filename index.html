@@ -2399,6 +2399,27 @@ class Component extends DCLogic {
           d.style.opacity = '1';
           d.style.transform = 'scale(1)';
           d.style.pointerEvents = 'auto';
+          // Móvil: expandir el box con toda la info (sin scroll interno);
+          // el alto del escenario crece para empujar el resto de la página
+          if (window.innerWidth < 760) {
+            const ring = d.firstElementChild;
+            const inner = d.querySelector('[data-scrollable]');
+            if (ring) ring.style.maxHeight = 'none';
+            if (inner) {
+              inner.style.maxHeight = 'none';
+              inner.style.overflowY = 'visible';
+              inner.style.touchAction = 'auto';
+            }
+            const stageEl3 = $('svcStage');
+            requestAnimationFrame(() => {
+              if (ring && stageEl3) {
+                const h = ring.getBoundingClientRect().height;
+                if (h > 0) stageEl3.style.height = Math.ceil(h + 24) + 'px';
+                const y = stageEl3.getBoundingClientRect().top + window.scrollY - 76;
+                window.scrollTo({ top: y, behavior: this.reduced ? 'auto' : 'smooth' });
+              }
+            });
+          }
         }
       };
       const closeDetail = () => {
@@ -2409,6 +2430,16 @@ class Component extends DCLogic {
           d.style.opacity = '0';
           d.style.transform = 'scale(0.9)';
           d.style.pointerEvents = 'none';
+          const ring = d.firstElementChild;
+          const inner = d.querySelector('[data-scrollable]');
+          if (ring) ring.style.maxHeight = '';
+          if (inner) {
+            inner.style.maxHeight = '';
+            inner.style.overflowY = '';
+            inner.style.touchAction = '';
+          }
+          const stageEl3 = $('svcStage');
+          if (stageEl3) stageEl3.style.height = 'clamp(560px, 64svh, 660px)';
         }
         openIdx = -1;
         this.svcDetailOpen = false;
