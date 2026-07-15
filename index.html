@@ -116,7 +116,9 @@
 
       <!-- CAPA B · Capítulo 02 (debajo del iris wipe) -->
       <section id="cap2Sec" data-screen-label="Capítulo 02 · El feed" style="position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 60% 46% at 50% 0%, rgba(77, 124, 254, 0.14), transparent 70%), radial-gradient(ellipse 44% 38% at 78% 8%, rgba(142, 123, 255, 0.10), transparent 70%), #05060B; color: #F4F2ED; display: flex; align-items: center; justify-content: center;">
-        <div id="cap2Inner" style="max-width: 1160px; width: 100%; padding: 0 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; will-change: transform;">
+        <video id="cap2BgVid" src="uploads/cap2-fondo.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; z-index: 0; pointer-events: none; will-change: opacity;"></video>
+        <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(5, 6, 11, 0.82) 78%), linear-gradient(180deg, rgba(5, 6, 11, 0.55), rgba(5, 6, 11, 0.2) 40%, rgba(5, 6, 11, 0.65) 90%);"></div>
+        <div id="cap2Inner" style="position: relative; z-index: 1; max-width: 1160px; width: 100%; padding: 0 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; will-change: transform;">
           <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: #6B7484;">Capítulo 02 — Una verdad compartida</span>
           <h2 style="margin: 0; font-weight: 600; font-size: clamp(44px, 7vw, 96px); line-height: 1.02; letter-spacing: -0.03em; background: linear-gradient(184deg, #FBFAF7 20%, #C7CDDD 62%, #8E93A6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-wrap: balance;">Todos hemos<br>estado ahí</h2>
         </div>
@@ -990,11 +992,11 @@
         <span style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B7484;">Transversal a los 3 planes</span>
         <h3 style="margin: 0; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.05; letter-spacing: -0.02em; color: #F4F2ED;">INMERSIA App</h3>
         <p style="margin: 0; max-width: 520px; font-size: 16px; line-height: 1.65; color: #A7B0C0; text-wrap: pretty;">No es un chat con tu agencia: es <strong style="color: #F4F2ED; font-weight: 600;">tu portal</strong>. Ahí agendamos reuniones, programamos grabaciones y generamos los guiones. Y lo más importante: <strong style="color: #F4F2ED; font-weight: 600;">tú tienes el control</strong> — apruebas o rechazas cada pieza, pides correcciones y organizas tu semana como quieras.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px;">Reuniones</span>
-          <span style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px;">Grabaciones</span>
-          <span style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px;">Guiones</span>
-          <span style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px;">Aprobación con un toque</span>
+        <div id="appPills" style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span data-app-pill-glow="0" style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px; transition: color 1.1s ease, border-color 1.1s ease, box-shadow 1.1s ease, background 1.1s ease;">Reuniones</span>
+          <span data-app-pill-glow="1" style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px; transition: color 1.1s ease, border-color 1.1s ease, box-shadow 1.1s ease, background 1.1s ease;">Grabaciones</span>
+          <span data-app-pill-glow="2" style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px; transition: color 1.1s ease, border-color 1.1s ease, box-shadow 1.1s ease, background 1.1s ease;">Guiones</span>
+          <span data-app-pill-glow="3" style="display: inline-flex; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #B7BECD; border: 1px solid rgba(148, 163, 190, 0.26); border-radius: 999px; padding: 6px 14px; transition: color 1.1s ease, border-color 1.1s ease, box-shadow 1.1s ease, background 1.1s ease;">Aprobación con un toque</span>
         </div>
         <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #6B7484;">Elijas el plan que elijas, todo pasa por aquí — seas de Valle Las Trancas, Chillán o de fuera de la región.</p>
       </div>
@@ -1310,7 +1312,7 @@
     <div data-reveal="" style="width: 76px; height: 76px;">
       <svg viewBox="0 0 120 120" style="width: 100%; height: 100%; display: block;">
         <polygon points="60,14 106,60 60,106 14,60" fill="none" stroke="#8E96A8" stroke-width="2" stroke-linejoin="round"></polygon>
-        <g data-anim="" style="transform-box: fill-box; transform-origin: 50% 50%; animation: eyeBlinkLoop 5.5s ease-in-out infinite;">
+        <g data-anim="" style="transform-box: fill-box; transform-origin: 50% 50%;">
           <circle cx="60" cy="60" r="13" fill="#8E7BFF"></circle>
         </g>
       </svg>
@@ -1338,7 +1340,7 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;scrollLength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:560,&quot;min&quot;:380,&quot;max&quot;:760,&quot;step&quot;:20,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Intro&quot;},&quot;blink&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Intro&quot;},&quot;lowFx&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Rendimiento&quot;},&quot;cursorGlow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Rendimiento&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;scrollLength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:560,&quot;min&quot;:380,&quot;max&quot;:760,&quot;step&quot;:20,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Intro&quot;},&quot;phoneBgVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Intro&quot;},&quot;lowFx&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Rendimiento&quot;},&quot;cursorGlow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Rendimiento&quot;}}">
 class Component extends DCLogic {
   componentDidMount() {
     const $ = (id) => document.getElementById(id);
@@ -1376,10 +1378,38 @@ class Component extends DCLogic {
       const s = w / 284;
       inn.style.height = (sc.clientHeight / s).toFixed(2) + 'px';
       inn.style.transform = 'scale(' + s.toFixed(4) + ')';
-      sc.style.borderRadius = Math.max(18, 37 * s).toFixed(1) + 'px';
     };
     this.fitScreen();
     requestAnimationFrame(this.fitScreen);
+
+    // Video de fondo del cap. 02: bucle sin costura desde el segundo 2
+    {
+      const bv2 = document.getElementById('cap2BgVid');
+      if (bv2) {
+        bv2.loop = false;
+        bv2.removeAttribute('loop');
+        const LOOP_START = 2.6;
+        const onMeta = () => { if (bv2.currentTime < LOOP_START) bv2.currentTime = LOOP_START; };
+        if (bv2.readyState >= 1) onMeta(); else bv2.addEventListener('loadedmetadata', onMeta);
+        const onTime = () => {
+          if (bv2.duration && bv2.currentTime >= bv2.duration - 0.12) {
+            bv2.currentTime = LOOP_START;
+            bv2.play().catch(() => {});
+          }
+        };
+        bv2.addEventListener('timeupdate', onTime);
+        bv2.addEventListener('ended', () => { bv2.currentTime = LOOP_START; bv2.play().catch(() => {}); });
+        this.cleanup = this.cleanup || [];
+        this.cleanup.push(() => { bv2.removeEventListener('timeupdate', onTime); bv2.removeEventListener('loadedmetadata', onMeta); });
+      }
+    }
+    if ('ResizeObserver' in window) {
+      const scEl = document.getElementById('c2screen');
+      if (scEl) {
+        this.screenRO = new ResizeObserver(() => this.fitScreen());
+        this.screenRO.observe(scEl);
+      }
+    }
 
     // Deslizamiento horizontal táctil para carruseles (caps 3, 4 y 6)
     if (!this.cleanup) this.cleanup = [];
@@ -1417,6 +1447,58 @@ class Component extends DCLogic {
         elS.removeEventListener('touchend', te);
       });
     };
+
+    // iOS: evitar que la página capture el gesto en scrolls internos (nunca dejar el
+    // scroll exactamente en el tope o el fondo, para que el gesto siga dentro)
+    document.querySelectorAll('[data-scrollable]').forEach((scEl) => {
+      const nudge = () => {
+        const max = scEl.scrollHeight - scEl.clientHeight;
+        if (max <= 1) return;
+        if (scEl.scrollTop <= 0) scEl.scrollTop = 1;
+        else if (scEl.scrollTop >= max) scEl.scrollTop = max - 1;
+      };
+      scEl.addEventListener('touchstart', nudge, { passive: true });
+      this.cleanup.push(() => scEl.removeEventListener('touchstart', nudge));
+    });
+
+    // Cápsulas de INMERSIA App: se iluminan escalonadas al entrar en pantalla
+    const pillsWrap = document.getElementById('appPills');
+    if (pillsWrap && 'IntersectionObserver' in window) {
+      const pills = Array.from(pillsWrap.querySelectorAll('[data-app-pill-glow]'));
+      const pillCols = [
+        ['111, 231, 242', '#6FE7F2'],
+        ['201, 191, 255', '#C9BFFF'],
+        ['155, 180, 255', '#9BB4FF'],
+        ['77, 124, 254', '#7DA0FF']
+      ];
+      let pillTimers = [];
+      const lightUp = () => {
+        pillTimers.forEach(clearTimeout);
+        pillTimers = pills.map((p, i) => setTimeout(() => {
+          const rgb = pillCols[i % 4][0];
+          const hex = pillCols[i % 4][1];
+          p.style.color = hex;
+          p.style.borderColor = 'rgba(' + rgb + ', 0.65)';
+          p.style.background = 'rgba(' + rgb + ', 0.08)';
+          p.style.boxShadow = '0 0 18px rgba(' + rgb + ', 0.3), inset 0 0 10px rgba(' + rgb + ', 0.12)';
+        }, this.reduced ? 0 : 400 + i * 600));
+      };
+      const dim = () => {
+        pillTimers.forEach(clearTimeout);
+        pillTimers = [];
+        pills.forEach((p) => {
+          p.style.color = '#B7BECD';
+          p.style.borderColor = 'rgba(148, 163, 190, 0.26)';
+          p.style.background = 'transparent';
+          p.style.boxShadow = 'none';
+        });
+      };
+      const pio = new IntersectionObserver((es) => {
+        if (es[0].isIntersecting) lightUp(); else dim();
+      }, { threshold: 0.6 });
+      pio.observe(pillsWrap);
+      this.cleanup.push(() => { pio.disconnect(); pillTimers.forEach(clearTimeout); });
+    }
 
     // Pop-ups interactivos: hover agranda, click revela la problemática
     this.el.cards.forEach((c, i) => {
@@ -2422,8 +2504,13 @@ class Component extends DCLogic {
     if (r.bottom < -80 || r.top > this.vh + 80) return;
     const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - this.vh)));
     const u = Math.min(4.999, p * 5.55); // deja un respiro al final
-    const idx = Math.min(4, Math.floor(u));
-    const sub = Math.min(1, u - idx);
+    let idx = Math.min(4, Math.floor(u));
+    // Histéresis: no cambiar de paso justo en el borde — esperar un margen de scroll
+    // para que la animación del paso actual termine limpia antes de saltar
+    const prev = (this.procIdx == null) ? idx : this.procIdx;
+    if (idx > prev && u - idx < 0.16) idx = idx - 1;
+    if (idx < prev && Math.ceil(u) - u < 0.16) idx = Math.min(4, idx + 1);
+    const sub = Math.min(1, Math.max(0, u - idx));
     if (this.procIdx !== idx) {
       this.procIdx = idx;
       c.panes.forEach((pane, i) => {
@@ -2542,9 +2629,7 @@ class Component extends DCLogic {
     const pv = this.easeOut(this.sub(p, 0.29, 0.35));
     const bv = this.sub(p, 0.38, 0.46);
     let closed = 0;
-    if (this.props.blink !== false && bv > 0 && bv < 1) {
-      closed = Math.pow(Math.sin(bv * Math.PI), 1.4);
-    }
+
     const scale = 0.65 + 0.35 * pv;
     const sy = 1 - 0.92 * closed;
     const sx = 1 + 0.05 * closed;
@@ -2602,6 +2687,22 @@ class Component extends DCLogic {
     }
 
     el.hint.style.opacity = String(1 - this.sub(p, 0.01, 0.05));
+
+    // Fondo de video del capítulo 02: fade in al terminar la animación del ojo
+    {
+      const vid = document.getElementById('cap2BgVid');
+      if (vid && this.props.phoneBgVideo === false) {
+        vid.style.opacity = '0';
+        if (!vid.paused) vid.pause();
+      } else if (vid) {
+        const fadeIn = this.sub(pc, 0, 0.14);
+        const fadeOut = 1 - this.sub(pc, 0.58, 0.72);
+        const op = 0.55 * this.easeOut(fadeIn) * fadeOut;
+        vid.style.opacity = op.toFixed(3);
+        if (op > 0.01 && vid.paused) vid.play().catch(() => {});
+        else if (op <= 0.01 && !vid.paused) vid.pause();
+      }
+    }
 
     // Capítulo 02: teléfono → tarjetas → salida → texto 2 → pull-to-refresh
     if (el.visual) el.visual.style.display = 'block';
