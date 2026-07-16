@@ -83,8 +83,8 @@
 <div style="position: relative; background: #05060B; color: #F4F2ED; font-family: 'Instrument Sans', sans-serif; overflow-x: clip;">
 
   <!-- Video de fondo en bucle: profundidad detrás de todos los capítulos -->
-  <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: clip;">
-    <div id="auraMover" style="position: absolute; left: 0; top: 0; width: 100%; height: 100vh; overflow: clip; will-change: transform;">
+  <div style="position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: clip;">
+    <div id="auraMover" style="position: absolute; left: 0; top: 0; width: 100%; height: 100dvh; overflow: clip;">
       <video id="bgVideo" src="uploads/hf_20260715_002213_f44a817a-8919-470b-a82a-08f2385f2c60.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></video>
       <div style="position: absolute; inset: 0; background: linear-gradient(105deg, rgba(5, 6, 11, 0.68) 0%, rgba(5, 6, 11, 0.55) 45%, rgba(5, 6, 11, 0.45) 100%);"></div>
     </div>
@@ -1674,10 +1674,9 @@ class Component extends DCLogic {
     this.onScroll = () => { this.dirty = true; };
     window.addEventListener('scroll', this.onScroll, { passive: true });
 
-    // El video de fondo acompaña el viewport (se sincroniza en el bucle rAF principal)
-    this.auraMover = document.getElementById('auraMover');
+    // El video de fondo es fixed: no necesita seguir el scroll
+    this.auraMover = null;
     this.lastAuraY = -1;
-    if (this.auraMover) this.auraMover.style.transform = 'translateY(' + window.scrollY + 'px)';
     const bgv = document.getElementById('bgVideo');
     if (bgv) {
       bgv.muted = true;
