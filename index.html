@@ -50,11 +50,14 @@
       #appPortal [data-app-item] > div:nth-child(2) > span:first-child { font-size: 11.5px !important; }
       #appPortal [data-app-state] { font-size: 9px !important; }
       #appPortal [data-app-approve], #appPortal [data-app-reject] { width: 30px !important; height: 30px !important; }
-      #appPortal [data-app-day] { min-height: 42px !important; padding: 5px 1px !important; gap: 3px !important; }
+      #appPortal [data-app-day] { height: 42px !important; min-height: 0 !important; box-sizing: border-box !important; overflow: hidden !important; padding: 5px 1px !important; gap: 3px !important; }
       #appPortal [data-app-day] > span { font-size: 8.5px !important; }
       #appPortal [data-app-pill] { font-size: 7.5px !important; padding: 2px 4px !important; }
+      /* Versión simplificada en teléfono: sin calendario ni tercera pieza, sin saltos de altura */
+      #appPortal [data-app-state] { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
     }
     a { color: #C9BFFF; text-decoration: none; }
+    @keyframes procHintBob { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
     a:hover { color: #F4F2ED; }
     ::selection { background: #4D7CFE; color: #F4F2ED; }
     @keyframes introHintDrop {
@@ -556,7 +559,7 @@
       <article data-port="ia" data-client="WP Eric Augé · KTM" data-format="Video vertical · Campaña indumentaria" data-method="Creado con IA" data-obj="Campaña de presentación de la nueva indumentaria del equipo WP Eric Augé KTM — guantes." data-result="Producido íntegramente con IA — sin sesión de grabación." style="position: absolute; left: 50%; top: 50%; width: min(430px, 82vw); transform: translate(-50%, -50%); border-radius: 24px; padding: 2px; background: linear-gradient(160deg, rgba(142, 123, 255, 0.4), rgba(200, 210, 228, 0.08) 45%, rgba(111, 231, 242, 0.3)); cursor: pointer; will-change: transform, opacity, filter;">
         <div style="border-radius: 22px; overflow: hidden; background: linear-gradient(170deg, rgba(11, 14, 23, 0.98), rgba(6, 8, 14, 0.99)); border: 1px solid rgba(200, 210, 228, 0.08); display: flex; flex-direction: column;">
           <div style="position: relative; height: 440px; background: #0A0E18;">
-            <video data-port-media="" src="uploads/hf_20260227_222519_d6f8f1a7-384d-41db-86b7-b4babb444bc9-44dd78b4.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+            <video data-port-media="" data-no-audio="1" src="uploads/hf_20260227_222519_d6f8f1a7-384d-41db-86b7-b4babb444bc9-44dd78b4.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
             <span style="position: absolute; top: 12px; left: 12px; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.06em; color: #C9BFFF; background: rgba(5, 6, 11, 0.72); border: 1px solid rgba(201, 191, 255, 0.4); border-radius: 6px; padding: 4px 8px;">Creado con IA</span>
           </div>
           <div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 7px;">
@@ -570,7 +573,7 @@
       <article data-port="ia" data-client="WP Eric Augé · KTM" data-format="Video vertical · Campaña indumentaria" data-method="Creado con IA" data-obj="Campaña de presentación de la nueva indumentaria del equipo WP Eric Augé KTM — casco." data-result="Producido íntegramente con IA — sin sesión de grabación." style="position: absolute; left: 50%; top: 50%; width: min(430px, 82vw); transform: translate(-50%, -50%); border-radius: 24px; padding: 2px; background: linear-gradient(160deg, rgba(142, 123, 255, 0.4), rgba(200, 210, 228, 0.08) 45%, rgba(111, 231, 242, 0.3)); cursor: pointer; will-change: transform, opacity, filter;">
         <div style="border-radius: 22px; overflow: hidden; background: linear-gradient(170deg, rgba(11, 14, 23, 0.98), rgba(6, 8, 14, 0.99)); border: 1px solid rgba(200, 210, 228, 0.08); display: flex; flex-direction: column;">
           <div style="position: relative; height: 440px; background: #0A0E18;">
-            <video data-port-media="" src="uploads/hf_20260227_222129_d2ab5162-6815-4348-a54e-b84c27c7b073 (1)-f709dfdd.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+            <video data-port-media="" data-no-audio="1" src="uploads/hf_20260227_222129_d2ab5162-6815-4348-a54e-b84c27c7b073 (1)-f709dfdd.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
             <span style="position: absolute; top: 12px; left: 12px; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.06em; color: #C9BFFF; background: rgba(5, 6, 11, 0.72); border: 1px solid rgba(201, 191, 255, 0.4); border-radius: 6px; padding: 4px 8px;">Creado con IA</span>
           </div>
           <div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 7px;">
@@ -1008,8 +1011,8 @@
       <div style="flex: 1 1 420px; min-width: 0; max-width: 560px; border-radius: 22px; padding: 2px; background: linear-gradient(160deg, rgba(111, 231, 242, 0.35), rgba(200, 210, 228, 0.08) 45%, rgba(142, 123, 255, 0.25)); box-shadow: 0 24px 60px rgba(2, 3, 8, 0.55);">
         <div id="appPortal" style="position: relative; border-radius: 20px; padding: 18px 18px 16px; background: linear-gradient(170deg, rgba(11, 14, 23, 0.98), rgba(6, 8, 14, 0.99)); border: 1px solid rgba(200, 210, 228, 0.08); display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-            <span style="font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8E96A8;">INMERSIA App · Portal del cliente</span>
-            <span style="display: inline-flex; align-items: center; gap: 6px; font-family: ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #6FE7F2;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #6FE7F2; box-shadow: 0 0 8px rgba(111, 231, 242, 0.9);"></span>EN LÍNEA</span>
+            <span style="font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8E96A8;">INMERSIA App</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px; margin-right: 4px; font-family: ui-monospace, monospace; font-size: 9px; letter-spacing: 0.1em; color: #6FE7F2;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #6FE7F2; box-shadow: 0 0 8px rgba(111, 231, 242, 0.9);"></span>EN LÍNEA</span>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -1052,7 +1055,7 @@
             </div>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div id="appWeek" style="display: flex; flex-direction: column; gap: 8px;">
             <div style="display: flex; align-items: baseline; justify-content: space-between;">
               <span style="font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; color: #C9CFDC;">Tu semana</span>
               <span style="font-family: ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.08em; color: #6B7484;">lo aprobado se agenda solo</span>
@@ -1068,10 +1071,6 @@
             </div>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #6FE7F2; box-shadow: 0 0 10px rgba(111, 231, 242, 0.8);"></span>
-            <span style="font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8E96A8;">Así se ve tu control — también puedes tocarlo tú</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1220,6 +1219,12 @@
       </div>
 
       <span style="font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; color: #6B7484;">medir → aprender → mejorar</span>
+
+      <!-- Señal de scroll: indica que hay que seguir bajando para avanzar los pasos -->
+      <div id="procHint" style="position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; padding: 9px 16px; border-radius: 999px; background: rgba(11, 14, 23, 0.85); border: 1px solid rgba(111, 231, 242, 0.3); box-shadow: 0 8px 28px rgba(2, 3, 8, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 5; white-space: nowrap;">
+        <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; flex-shrink: 0; animation: procHintBob 1.6s ease-in-out infinite;"><path d="M6 9 L 12 15 L 18 9" fill="none" stroke="#6FE7F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #C9CFDC;">Sigue bajando · <span id="procHintStep">paso 1 de 5</span></span>
+      </div>
     </div>
   </div>
 
@@ -1909,7 +1914,7 @@ class Component extends DCLogic {
         if (okBtn) { okBtn.style.background = 'rgba(' + meta.rgb + ', 0.3)'; okBtn.style.cursor = 'default'; }
         if (noBtn) { noBtn.style.opacity = '0.35'; noBtn.style.cursor = 'default'; }
         const slot = appDays[meta.day];
-        if (slot && !slot.querySelector('[data-app-pill]')) {
+        if (slot && slot.offsetParent !== null && !slot.querySelector('[data-app-pill]')) {
           const pill = document.createElement('span');
           pill.setAttribute('data-app-pill', '');
           pill.textContent = meta.label;
@@ -1984,9 +1989,11 @@ class Component extends DCLogic {
         if (slot) { slot.style.borderStyle = 'dashed'; slot.style.borderColor = 'rgba(148, 163, 190, 0.22)'; }
       };
       const idleCycle = () => {
-        const i = idleN % 3;
-        const a = appActs[i];
-        const meta = appMeta[i];
+        const live = appActs.filter((x) => x.item.offsetParent !== null);
+        if (!live.length) { this.appIdleTimer = setTimeout(idleCycle, 1500); return; }
+        const i = idleN % live.length;
+        const a = live[i];
+        const meta = appMeta[appActs.indexOf(a)];
         const rejectFirst = idleN % 2 === 1;
         resetItem(a, meta);
         setTimeout(() => {
@@ -2007,6 +2014,22 @@ class Component extends DCLogic {
       if (this.reduced) {
         appActs[0].approve();
         appActs[2].approve();
+      } else if ('IntersectionObserver' in window) {
+        // La demo solo corre mientras el portal está en pantalla
+        let appVisible = false;
+        const appIO = new IntersectionObserver((es) => {
+          const vis = es[0].isIntersecting;
+          if (vis && !appVisible) {
+            appVisible = true;
+            clearTimeout(this.appIdleTimer);
+            this.appIdleTimer = setTimeout(idleCycle, 700);
+          } else if (!vis && appVisible) {
+            appVisible = false;
+            clearTimeout(this.appIdleTimer);
+          }
+        }, { threshold: 0.3 });
+        appIO.observe(appPortal);
+        this.cleanup.push(() => appIO.disconnect());
       } else {
         this.appIdleTimer = setTimeout(idleCycle, 700);
       }
@@ -2094,13 +2117,16 @@ class Component extends DCLogic {
       // Botón de audio por video
       const spkOff = '<svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M4 9.5 H 7.5 L 12 5.5 V 18.5 L 7.5 14.5 H 4 Z" fill="#F4F2ED"></path><path d="M16 9.5 L 20.5 14.5 M20.5 9.5 L 16 14.5" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"></path></svg>';
       const spkOn = '<svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M4 9.5 H 7.5 L 12 5.5 V 18.5 L 7.5 14.5 H 4 Z" fill="#6FE7F2"></path><path d="M15.5 9 A 4 4 0 0 1 15.5 15 M17.5 6.5 A 7.5 7.5 0 0 1 17.5 17.5" fill="none" stroke="#6FE7F2" stroke-width="1.8" stroke-linecap="round"></path></svg>';
-      const muteAllPort = () => {
-        document.querySelectorAll('video[data-port-media]').forEach((v) => { v.dataset.sound = '0'; v.muted = true; v.volume = 0; });
+      const muteAllPort = (except) => {
+        document.querySelectorAll('video[data-port-media]').forEach((v) => {
+          if (v === except) return;
+          v.dataset.sound = '0'; v.muted = true; try { v.volume = 0; } catch (e) {}
+        });
         document.querySelectorAll('[data-port-sound]').forEach((b) => { b.innerHTML = spkOff; b.style.borderColor = 'rgba(255, 255, 255, 0.25)'; });
       };
       portCardsAll.forEach((card) => {
         const v = card.querySelector('video[data-port-media]');
-        if (!v) return;
+        if (!v || v.dataset.noAudio === '1') return;
         const b = document.createElement('button');
         b.setAttribute('data-port-sound', '');
         b.setAttribute('aria-label', 'Activar audio');
@@ -2109,27 +2135,27 @@ class Component extends DCLogic {
         b.addEventListener('click', (e) => {
           e.stopPropagation();
           const wasOn = v.dataset.sound === '1';
-          muteAllPort();
-          if (!wasOn) {
-            v.dataset.sound = '1';
-            v.removeAttribute('muted');
-            v.muted = false;
-            v.volume = 1;
-            // iOS: llamar play() dentro del gesto SIN pausar antes (pause+play aborta y deja el video mudo)
-            const p = v.play();
-            if (p && p.catch) {
-              p.catch(() => {
-                // Rechazado con audio: reintentar una vez dentro del mismo gesto
-                v.muted = false;
-                v.play().catch(() => {
-                  // iOS se niega: volver a estado silenciado para no mentir con el ícono
-                  muteAllPort();
-                });
+          if (wasOn) { muteAllPort(); return; }
+          // Silenciar los demás SIN tocar el video objetivo (mutear+desmutear en el mismo
+          // gesto deja el audio muerto en iOS)
+          muteAllPort(v);
+          v.dataset.sound = '1';
+          v.removeAttribute('muted');
+          v.muted = false;
+          try { v.volume = 1; } catch (e) {}
+          // iOS: play() con audio debe ir síncrono dentro del gesto; si ya suena, no relanzar
+          const p = v.paused ? v.play() : null;
+          if (p && p.catch) {
+            p.catch(() => {
+              v.muted = false;
+              v.play().catch(() => {
+                // iOS se niega: volver a estado silenciado para no mentir con el ícono
+                muteAllPort();
               });
-            }
-            b.innerHTML = spkOn;
-            b.style.borderColor = 'rgba(111, 231, 242, 0.6)';
+            });
           }
+          b.innerHTML = spkOn;
+          b.style.borderColor = 'rgba(111, 231, 242, 0.6)';
         });
         v.parentElement.appendChild(b);
       });
@@ -2693,6 +2719,17 @@ class Component extends DCLogic {
     const r = c.wrap.getBoundingClientRect();
     if (r.bottom < -80 || r.top > this.vh + 80) return;
     const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - this.vh)));
+    // Señal "sigue bajando": visible mientras la sección está fijada y quedan pasos
+    if (!c.hint) { c.hint = document.getElementById('procHint'); c.hintStep = document.getElementById('procHintStep'); }
+    if (c.hint) {
+      const pinned = r.top <= 4 && p < 0.92;
+      c.hint.style.opacity = pinned ? '1' : '0';
+      if (c.hintStep) {
+        const stepN = Math.min(5, Math.floor(p * 5.55) + 1);
+        const txt = 'paso ' + stepN + ' de 5';
+        if (c.hintStep.textContent !== txt) c.hintStep.textContent = txt;
+      }
+    }
     const u = Math.min(4.999, p * 5.55); // deja un respiro al final
     let idx = Math.min(4, Math.floor(u));
     // Histéresis: no cambiar de paso justo en el borde — esperar un margen de scroll
