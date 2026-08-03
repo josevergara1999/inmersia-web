@@ -20,9 +20,17 @@
     @keyframes auraA { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-6vw, 5vh) scale(1.12); } 100% { transform: translate(3vw, -4vh) scale(0.95); } }
     @keyframes auraB { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(5vw, -6vh) scale(1.1); } 100% { transform: translate(-4vw, 3vh) scale(0.96); } }
     @keyframes auraC { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(6vw, 6vh) scale(1.15); } }
+    /* El acceso al portal se ve desde el primer segundo; el logo y el resto del menú
+       aparecen recién cuando termina la intro, y el portal les deja el sitio. */
+    #topNav { background: transparent; transition: background 0.5s; }
+    #topNav[data-shown="1"] { background: linear-gradient(180deg, rgba(5, 6, 11, 0.85), rgba(5, 6, 11, 0)); }
+    #topNav > a, #topNav [data-navlink] { opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+    #topNav[data-shown="1"] > a, #topNav[data-shown="1"] [data-navlink] { opacity: 1; pointer-events: auto; }
+    #portalLink { pointer-events: auto; }
+
     /* ---- Versión móvil ---- */
     @media (max-width: 700px) {
-      #topNav div a:not(:last-child) { display: none; }
+      #topNav div a[data-navlink]:not(:last-of-type) { display: none; }
       #c2card0, #c2card1, #c2card2, #c2card3 { padding: 6px 10px 6px 6px !important; gap: 7px !important; border-radius: 12px !important; }
       #c2card0 > div:first-child, #c2card1 > div:first-child, #c2card2 > div:first-child, #c2card3 > div:first-child { width: 22px !important; height: 22px !important; }
       #c2card0 > div:first-child svg, #c2card1 > div:first-child svg, #c2card2 > div:first-child svg, #c2card3 > div:first-child svg { width: 11px !important; height: 11px !important; }
@@ -101,16 +109,20 @@
   <div id="cursorGlow" style="position: fixed; left: 0; top: 0; z-index: 1; width: 620px; height: 620px; margin: -310px 0 0 -310px; border-radius: 50%; background: radial-gradient(circle, rgba(77, 124, 254, 0.07) 0%, rgba(142, 123, 255, 0.045) 38%, transparent 70%); pointer-events: none; opacity: 0; will-change: transform, opacity;"></div>
 
   <!-- Navegación (aparece al terminar la intro) -->
-  <nav id="topNav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 80; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px clamp(20px, 4vw, 48px); background: linear-gradient(180deg, rgba(5, 6, 11, 0.85), rgba(5, 6, 11, 0)); opacity: 0; pointer-events: none; transition: opacity 0.5s; will-change: opacity;">
+  <nav id="topNav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 80; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px clamp(20px, 4vw, 48px); pointer-events: none;">
     <a href="#introScroll" style="display: flex; align-items: center; gap: 11px;">
       <svg viewBox="0 0 120 120" style="width: 20px; height: 20px; flex-shrink: 0;"><polygon points="60,14 106,60 60,106 14,60" fill="none" stroke="#AEB6C8" stroke-width="7" stroke-linejoin="round"></polygon><circle cx="60" cy="60" r="14" fill="#8E7BFF"></circle></svg>
       <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #F4F2ED;">Inmersia</span>
     </a>
     <div style="display: flex; align-items: center; gap: clamp(14px, 2.5vw, 32px);">
-      <a href="#svcSec" style="font-size: 14px; font-weight: 500; color: #A7B0C0;" style-hover="color: #F4F2ED;">Servicios</a>
-      <a href="#procWrap" style="font-size: 14px; font-weight: 500; color: #A7B0C0;" style-hover="color: #F4F2ED;">Método</a>
-      <a href="#caseSec" style="font-size: 14px; font-weight: 500; color: #A7B0C0;" style-hover="color: #F4F2ED;">Casos</a>
-      <a href="#ctaSec" style="font-size: 14px; font-weight: 600; color: #F4F2ED; border: 1px solid rgba(148, 163, 190, 0.28); border-radius: 999px; padding: 9px 20px; background: rgba(16, 20, 30, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: border-color 0.3s, box-shadow 0.3s;" style-hover="border-color: rgba(111, 231, 242, 0.55); box-shadow: 0 0 24px rgba(77, 124, 254, 0.25);" data-open-form="">Hablemos</a>
+      <a data-navlink href="#svcSec" style="font-size: 14px; font-weight: 500; color: #A7B0C0;" style-hover="color: #F4F2ED;">Servicios</a>
+      <a data-navlink href="#procWrap" style="font-size: 14px; font-weight: 500; color: #A7B0C0;" style-hover="color: #F4F2ED;">Método</a>
+      <a data-navlink href="#caseSec" style="font-size: 14px; font-weight: 500; color: #A7B0C0;" style-hover="color: #F4F2ED;">Casos</a>
+      <a data-navlink href="#ctaSec" style="font-size: 14px; font-weight: 600; color: #F4F2ED; border: 1px solid rgba(148, 163, 190, 0.28); border-radius: 999px; padding: 9px 20px; background: rgba(16, 20, 30, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: border-color 0.3s, box-shadow 0.3s;" style-hover="border-color: rgba(111, 231, 242, 0.55); box-shadow: 0 0 24px rgba(77, 124, 254, 0.25);" data-open-form="">Hablemos</a>
+      <a id="portalLink" href="https://portal.inmersiaperformance.cl" target="_blank" rel="noopener" title="Portal del cliente" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #F4F2ED; border: 1px solid rgba(111, 231, 242, 0.4); border-radius: 999px; padding: 9px 18px; background: rgba(16, 20, 30, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); white-space: nowrap; transition: border-color 0.3s, box-shadow 0.3s;" style-hover="border-color: rgba(111, 231, 242, 0.85); box-shadow: 0 0 24px rgba(111, 231, 242, 0.28);">
+        <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; flex-shrink: 0;"><path d="M2 12 s 4 -6 10 -6 s 10 6 10 6 s -4 6 -10 6 s -10 -6 -10 -6 Z" fill="none" stroke="#6FE7F2" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="12" cy="12" r="2.6" fill="#6FE7F2"></circle></svg>
+        Portal
+      </a>
     </div>
   </nav>
 
@@ -2804,8 +2816,7 @@ class Component extends DCLogic {
     // Navegación: aparece cuando la intro terminó
     if (el.nav) {
       const show = pAll >= 0.995 || rect.bottom < this.vh;
-      el.nav.style.opacity = show ? '1' : '0';
-      el.nav.style.pointerEvents = show ? 'auto' : 'none';
+      el.nav.dataset.shown = show ? '1' : '0';
     }
 
     // ---------- MOVIMIENTO REDUCIDO ----------
